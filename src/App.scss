@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+header {
+  text-align: center;
+  overflow-y: hidden;
+  padding: 75px 0 175px;
+  margin-bottom: -100px;
+  background:
+          radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),
+          linear-gradient(#FFFFFF00, white),
+          url("https://picsum.photos/1000");
+  background-size: cover;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background: grey;
+  margin-top: 30px;
+}

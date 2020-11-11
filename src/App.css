@@ -1,38 +1,25 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+header {
   text-align: center;
+  overflow-y: hidden;
+  padding: 75px 0 175px;
+  margin-bottom: -100px;
+  background: radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00), linear-gradient(#FFFFFF00, white), url("https://picsum.photos/1000");
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  background: grey;
+  margin-top: 30px;
 }
+
+/*# sourceMappingURL=App.css.map */
