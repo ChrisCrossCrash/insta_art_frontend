@@ -10,15 +10,17 @@ function App() {
   const APIRoot = 'http://localhost:8000/api';
   const match = useRouteMatch();
 
-  const loadPieces = url => {
-    fetch(url)
+  let piecesUrl = `${APIRoot}${match.url}`;
+
+  const loadPieces = () => {
+    fetch(piecesUrl)
       .then(response => response.json())
       .then(data => {
         setPieces(data);
       });
   };
 
-  useEffect(() => loadPieces(`${APIRoot}${match.url}`), []);
+  useEffect(loadPieces, [piecesUrl]);
 
   let background;
 

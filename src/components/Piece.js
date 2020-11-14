@@ -4,9 +4,8 @@ import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/cjs/Card";
 import Button from "react-bootstrap/cjs/Button";
 import Row from "react-bootstrap/Row";
-import Badge from "react-bootstrap/cjs/Badge";
 import Modal from "react-bootstrap/cjs/Modal";
-
+import {Link} from "react-router-dom";
 
 export default function Piece(props) {
   const piece = props.piece;
@@ -69,32 +68,27 @@ export default function Piece(props) {
             <div style={{marginBottom: '1em'}}>
               <div>
                 <span className="small text-muted font-weight-bold">Artist: </span>
-                <Badge
-                  as="a"
-                  pill
-                  variant="secondary"
-                  href={`/artist/${piece.artist.pk}`}
-                >{piece.artist.name}</Badge>
+                <Link
+                  to={`/artist/${piece.artist.pk}`}
+                  className='badge badge-pill badge-secondary'
+                >{piece.artist.name}</Link>
+
               </div>
               <div>
                 <span className="small text-muted font-weight-bold">Location: </span>
-                <Badge
-                  as="a"
-                  pill
-                  variant="secondary"
-                  href={`/location/${piece.location.pk}`}
-                >{piece.location.name}</Badge>
+                <Link
+                  to={`/location/${piece.location.pk}`}
+                  className='badge badge-pill badge-secondary'
+                >{piece.location.name}</Link>
               </div>
               <div>
                 <span className="small text-muted font-weight-bold">Art movements: </span>
                 {piece.styles.map(movement =>
                   <React.Fragment>
-                    <Badge
-                      as="a"
-                      pill
-                      variant="secondary"
-                      href={`/style/${movement.pk}`}
-                    >{movement.name}</Badge>{' '}
+                    <Link
+                      to={`/style/${movement.pk}`}
+                      className='badge badge-pill badge-secondary'
+                    >{movement.name}</Link>{' '}
                   </React.Fragment>
                 )}
               </div>

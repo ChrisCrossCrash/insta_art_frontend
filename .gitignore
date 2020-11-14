@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# The npm config contains the Club GreenSock account token, so don't share it.
+.npmrc
