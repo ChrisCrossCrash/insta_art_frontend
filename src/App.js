@@ -1,21 +1,36 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Piece from "./components/Piece";
+import {useRouteMatch} from 'react-router-dom';
 
 function App() {
-  const samplePiece = {
-    title: "The Dream",
-    artist: "Henri Rousseau",
-    location: "Museum of Modern Art",
-    movements: ["Naive Art", "Primitivism", "Post-Impressionism"],
-    imageUrl: "https://picsum.photos/1000",
-    wikiUrl: "https://en.wikipedia.org/wiki/The_Dream_(Rousseau_painting)"
+
+  const [pieces, setPieces] = useState(null);
+  const APIRoot = 'http://localhost:8000/api';
+  const match = useRouteMatch();
+
+  const loadPieces = url => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setPieces(data);
+      });
   };
+
+  useEffect(() => loadPieces(`${APIRoot}${match.url}`), []);
+
+  let background;
+
+  if (pieces) {
+    background = `radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),linear-gradient(#FFFFFF00, white), url(http://localhost:8000${pieces[0].image})`
+  }
 
   return (
     <div className="App">
-      <header>
+      <header style={{
+        backgroundImage: background,
+      }}>
         <h1 style={{
           fontFamily: '"Josefin Sans", sans-serif',
           fontSize: '7rem',
@@ -24,12 +39,9 @@ function App() {
       </header>
       <main>
         <Container>
-          <Piece piece={samplePiece}/>
+          {pieces && pieces.map((piece, i) => <Piece key={i} piece={piece} index={i}/>)}
         </Container>
       </main>
-      {/*<footer>*/}
-      {/*  Chris Kumm 2020*/}
-      {/*</footer>*/}
     </div>
   );
 }
