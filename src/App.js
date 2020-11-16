@@ -2,14 +2,13 @@ import React, {useEffect, useState} from "react";
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Piece from "./components/Piece";
-import {useRouteMatch} from 'react-router-dom';
+import {useRouteMatch, Link} from 'react-router-dom';
 
 function App() {
 
   const [pieces, setPieces] = useState(null);
   const APIRoot = 'http://localhost:8000/api';
   const match = useRouteMatch();
-
   let piecesUrl = `${APIRoot}${match.url}`;
 
   const loadPieces = () => {
@@ -33,11 +32,16 @@ function App() {
       <header style={{
         backgroundImage: background,
       }}>
-        <h1 style={{
-          fontFamily: '"Josefin Sans", sans-serif',
-          fontSize: '7rem',
-          margin: 0,
-        }}>InstaArt</h1>
+        <Link
+          style={{
+            fontFamily: '"Josefin Sans", sans-serif',
+            fontSize: '7rem',
+            margin: 0,
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+          to='/'
+        >InstaArt</Link>
       </header>
       <main>
         <Container>

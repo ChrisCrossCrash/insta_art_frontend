@@ -22,3 +22,9 @@ footer {
   background: grey;
   margin-top: 30px;
 }
+
+// This prevents white boxes from filling in the unfilled areas around the image modals.
+.modal-content {
+  border: none;
+  background-color: transparent;
+}

@@ -22,4 +22,9 @@ footer {
   margin-top: 30px;
 }
 
+.modal-content {
+  border: none;
+  background-color: transparent;
+}
+
 /*# sourceMappingURL=App.css.map */

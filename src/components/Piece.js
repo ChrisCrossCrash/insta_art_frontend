@@ -21,14 +21,17 @@ export default function Piece(props) {
       <Modal
         show={showModal}
         onHide={handleCloseModal}
-        size='xl'
         centered
+        size='xl'
       >
         <Image
           src={`http://localhost:8000${piece.image}`}
           alt={piece.title}
-          fluid
-          style={{maxHeight: '90vh'}}
+          style={{
+            objectFit: 'contain',
+            height: '90vh',
+            width: '100%',
+          }}
           onClick={handleCloseModal}
         />
       </Modal>
@@ -39,7 +42,10 @@ export default function Piece(props) {
           src={`http://localhost:8000${piece.image}`}
           alt={piece.title}
           fluid
-          style={{boxShadow: '5px 5px 10px #00000022'}}
+          style={{
+            boxShadow: '5px 5px 10px #00000022',
+            cursor: 'pointer',
+          }}
           onClick={handleShowModal}
         />
       </Col>
