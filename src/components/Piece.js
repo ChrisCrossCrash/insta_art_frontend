@@ -75,7 +75,7 @@ export default function Piece(props) {
               <div>
                 <span className="small text-muted font-weight-bold">Artist: </span>
                 <Link
-                  to={`/artist/${piece.artist.pk}`}
+                  to={`/art/artist/${piece.artist.pk}`}
                   className='badge badge-pill badge-secondary'
                 >{piece.artist.name}</Link>
 
@@ -83,7 +83,7 @@ export default function Piece(props) {
               <div>
                 <span className="small text-muted font-weight-bold">Location: </span>
                 <Link
-                  to={`/location/${piece.location.pk}`}
+                  to={`/art/location/${piece.location.pk}`}
                   className='badge badge-pill badge-secondary'
                 >{piece.location.name}</Link>
               </div>
@@ -92,7 +92,7 @@ export default function Piece(props) {
                 {piece.styles.map(movement =>
                   <React.Fragment>
                     <Link
-                      to={`/style/${movement.pk}`}
+                      to={`/art/style/${movement.pk}`}
                       className='badge badge-pill badge-secondary'
                     >{movement.name}</Link>{' '}
                   </React.Fragment>

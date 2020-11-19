@@ -7,9 +7,12 @@ import {useRouteMatch, Link} from 'react-router-dom';
 function App() {
 
   const [pieces, setPieces] = useState(null);
-  const APIRoot = `${process.env.REACT_APP_DOMAIN}/api/art`;
+
+  // The address in the browser
   const match = useRouteMatch();
-  let piecesUrl = `${APIRoot}${match.url}`;
+
+  // The API URL
+  let piecesUrl = `${process.env.REACT_APP_DOMAIN}/api/art${match.url}`;
 
   const loadPieces = () => {
     fetch(piecesUrl)
