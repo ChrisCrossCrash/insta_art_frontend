@@ -7,7 +7,7 @@ import {useRouteMatch, Link} from 'react-router-dom';
 function App() {
 
   const [pieces, setPieces] = useState(null);
-  const APIRoot = 'http://localhost:8000/api';
+  const APIRoot = `${process.env.REACT_APP_DOMAIN}/api/art`;
   const match = useRouteMatch();
   let piecesUrl = `${APIRoot}${match.url}`;
 

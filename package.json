@@ -2,6 +2,7 @@
   "name": "insta_art_frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.chriskumm.com/art",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
