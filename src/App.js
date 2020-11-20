@@ -27,7 +27,7 @@ function App() {
   let background;
 
   if (pieces) {
-    background = `radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),linear-gradient(#FFFFFF00, white), url(http://localhost:8000${pieces[0].image})`
+    background = `radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),linear-gradient(#FFFFFF00, white), url(${process.env.REACT_APP_DOMAIN}${pieces[0].image})`
   }
 
   return (
