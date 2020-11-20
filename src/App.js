@@ -43,7 +43,7 @@ function App() {
             textDecoration: 'none',
             color: 'inherit',
           }}
-          to='/'
+          to='/art'
         >InstaArt</Link>
       </header>
       <main>
