@@ -25,7 +25,7 @@ export default function Piece(props) {
         size='xl'
       >
         <Image
-          src={`http://localhost:8000${piece.image}`}
+          src={`${process.env.REACT_APP_DOMAIN}${piece.image}`}
           alt={piece.title}
           style={{
             objectFit: 'contain',
@@ -39,7 +39,7 @@ export default function Piece(props) {
       {/* Swap the image and info columns based on if the index is even or odd. */}
       <Col xs={12} md={{span: 6, order: index % 2}}>
         <Image
-          src={`http://localhost:8000${piece.image}`}
+          src={`${process.env.REACT_APP_DOMAIN}${piece.image}`}
           alt={piece.title}
           fluid
           style={{
