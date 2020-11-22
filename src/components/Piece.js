@@ -89,13 +89,13 @@ export default function Piece(props) {
               </div>
               <div>
                 <span className="small text-muted font-weight-bold">Art movements: </span>
-                {piece.styles.map(movement =>
-                  <React.Fragment>
+                {piece.styles.map((movement, i) =>
+                  <span key={i}>
                     <Link
                       to={`/art/style/${movement.pk}`}
                       className='badge badge-pill badge-secondary'
                     >{movement.name}</Link>{' '}
-                  </React.Fragment>
+                  </span>
                 )}
               </div>
             </div>
