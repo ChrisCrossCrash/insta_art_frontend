@@ -2,25 +2,30 @@ import React, {useEffect, useState} from "react";
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Piece from "./components/Piece";
-import {useRouteMatch, Link} from 'react-router-dom';
+import {useLocation, Link} from 'react-router-dom';
 
 function App() {
+  console.log("loading 'App' component...");
 
   const [pieces, setPieces] = useState(null);
 
-  // The address in the browser
-  const match = useRouteMatch();
+  // Get the address in the browser
+  const currentUrl = useLocation();
 
-  // The API URL
-  let piecesUrl = `${process.env.REACT_APP_DOMAIN}/api/art${match.url}`;
+  // Get the API URL
+  let piecesUrl = `${process.env.REACT_APP_DOMAIN}/api${currentUrl.pathname}`;
+  console.log(`piecesUrl: ${piecesUrl}`);
 
   const loadPieces = () => {
+    console.log(`fetching new pieces from ${piecesUrl}`);
     fetch(piecesUrl)
       .then(response => response.json())
       .then(data => {
         setPieces(data);
       });
   };
+  console.log('pieces:');
+  console.log(pieces);
 
   useEffect(loadPieces, [piecesUrl]);
 
