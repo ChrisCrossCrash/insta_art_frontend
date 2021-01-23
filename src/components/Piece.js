@@ -58,7 +58,7 @@ export default function Piece(props) {
 
       <Col>
         <Card style={{boxShadow: '5px 5px 10px #00000022'}}>
-          <TextBox btnClassName='btn btn-secondary'>
+          <TextBox btnClassName='btn btn-outline-secondary'>
             <Card.Body>
               <Card.Title style={{
                 display: 'flex',
