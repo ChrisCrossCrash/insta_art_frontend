@@ -58,7 +58,11 @@ export default function Piece(props) {
 
       <Col>
         <Card style={{boxShadow: '5px 5px 10px #00000022'}}>
-          <TextBox btnClassName='btn btn-outline-secondary'>
+          <TextBox
+            btnClassName='btn btn-outline-secondary'
+            collapsedHeightPx={500}
+            allowedExtraHeightPx={200}
+          >
             <Card.Body>
               <Card.Title style={{
                 display: 'flex',

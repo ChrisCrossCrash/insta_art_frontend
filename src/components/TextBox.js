@@ -1,15 +1,18 @@
 import React, {useEffect, useRef} from 'react'
 import {gsap} from 'gsap'
 
-const TextBox = ({children, btnClassName}) => {
+const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightPx}) => {
+  /* Wraps content to give it a "Read More" button after it reaches a certain height
+  *
+  * props:
+  *   btnClassname: extra classes for the "Read More"/"Collapse" button
+  *   collapsedHeightPx: How tall the content will be (in pixels) when collapsed
+  *   allowedExtraHeightPx: How many pixels past "collapsedHeightPx" the element needs to be for it to be expandable.
+  *
+  *  */
 
   const textBoxRef = useRef()
   const footerHeight = '5rem'
-  const collapsedHeight = 500  // px int
-
-  // How much taller than the collapsed height does the
-  // TextBox need to be to get a "Read More" button?
-  const allowedExtraHeight = 200  // px int
 
   useEffect(() => {
     const textBox = textBoxRef.current
@@ -23,7 +26,7 @@ const TextBox = ({children, btnClassName}) => {
 
     const styleTextBox = () => {
       textBox.style.height = 'auto'
-      if (textBox.scrollHeight - allowedExtraHeight < collapsedHeight) {
+      if (textBox.scrollHeight - allowedExtraHeightPx < collapsedHeightPx) {
         textBoxFooter.style.display = 'none'
         isOpen = false
       } else {
@@ -33,7 +36,7 @@ const TextBox = ({children, btnClassName}) => {
           textBoxFade.style.display = 'none'
           textBoxBtn.innerHTML = 'Collapse'
         } else {
-          gsap.set(textBox, {height: collapsedHeight})
+          gsap.set(textBox, {height: collapsedHeightPx})
           textBoxFade.style.display = 'initial'
           textBoxBtn.innerHTML = 'Read More'
         }
@@ -48,7 +51,7 @@ const TextBox = ({children, btnClassName}) => {
         // Collapse the box
         textBoxBtn.innerHTML = 'Read More'
         isOpen = false
-        gsap.to(textBox, {height: collapsedHeight})
+        gsap.to(textBox, {height: collapsedHeightPx})
         textBoxFade.style.display = 'initial'
       } else {
         // Expand the box
@@ -72,7 +75,7 @@ const TextBox = ({children, btnClassName}) => {
         styleTextBox()
       }
     })
-  }, [])
+  })
 
   return (
     <div
