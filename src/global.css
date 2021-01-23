@@ -31,4 +31,17 @@ img, video {
   aspect-ratio: attr(width)/attr(height);
 }
 
+.page-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 4rem;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+}
+@media (min-width: 576px) {
+  .page-title {
+    font-size: 7rem;
+  }
+}
+
 /*# sourceMappingURL=global.css.map */

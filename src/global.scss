@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
+// Bootstrap breakpoints:
+// lg and xl: two cols  >= 992px
+// md:        one col   >= 768px (width: 100%)
+// sm:        two cols  >= 576px
+// xs:        one col    < 576px (width: 100%)
+
 header {
   text-align: center;
   overflow-y: hidden;
@@ -34,4 +40,16 @@ footer {
 img, video {
   //noinspection CssUnknownProperty
   aspect-ratio: attr(width) / attr(height);
+}
+
+.page-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 4rem;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+
+  @media (min-width: 576px) {
+    font-size: 7rem;
+  }
 }

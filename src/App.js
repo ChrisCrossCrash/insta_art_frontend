@@ -35,13 +35,7 @@ function App() {
         backgroundImage: background,
       }}>
         <Link
-          style={{
-            fontFamily: '"Josefin Sans", sans-serif',
-            fontSize: '7rem',
-            margin: 0,
-            textDecoration: 'none',
-            color: 'inherit',
-          }}
+          className='page-title'
           to='/art'
         >InstaArt</Link>
       </header>
