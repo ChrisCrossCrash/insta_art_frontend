@@ -1,60 +1,56 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {gsap} from 'gsap'
 
 const TextBox = ({children, btnClassName}) => {
 
+  const textBoxRef = useRef()
+
   useEffect(() => {
-    const textBoxes = document.querySelectorAll('.textbox')
+    const textBox = textBoxRef.current
+    // noinspection JSUnresolvedFunction
+    const textBoxBtn = textBox.querySelector('.textbox__btn')
+    const textBoxBtnInitialText = textBoxBtn.innerHTML
+    let isOpen = false
+    let collapsedHeight = 300
 
-    // The inside of the loop must be wrapped in a closure to contain its scope.
-    // Otherwise, all of the buttons will only open the last texBox
-    let textBox
-    for (textBox of textBoxes) {
-      ((textBox) => {
-        const textBoxBtn = textBox.querySelector('.textbox__btn')
-        const textBoxBtnInitialText = textBoxBtn.innerHTML
-        let isOpen = false
-        let collapsedHeight = 300
+    // Set the height when the page loads.
+    gsap.set(textBox, {height: collapsedHeight})
 
-        // Set the height when the page loads.
-        gsap.set(textBox, {height: collapsedHeight})
-
-        // Using the 'resize' event causes some funny behavior on mobile devices, since the address bar can pop in and
-        // out causing the vertical height to change. Because of this, we only want to do things when the horizontal
-        // width changes.
-        let trackedWindowWidth = window.innerWidth
-        window.addEventListener('resize', () => {
-          if (trackedWindowWidth !== window.innerWidth) {
-            // Recalculate the automatic height so that `textBox.scrollHeight
-            // is NOT what gsap set it to previously.
-            textBox.style.height = 'auto'
-            if (isOpen) {
-              gsap.set(textBox, {height: textBox.scrollHeight})
-            } else {
-              gsap.set(textBox, {height: collapsedHeight})
-            }
-          }
-        })
-
-        textBoxBtn.onclick = () => {
-          if (isOpen) {
-            // Collapse the box
-            textBoxBtn.innerHTML = textBoxBtnInitialText
-            isOpen = false
-            gsap.to(textBox, {height: collapsedHeight})
-          } else {
-            // Expand the box
-            textBoxBtn.innerHTML = 'Collapse'
-            isOpen = true
-            gsap.to(textBox, {height: textBox.scrollHeight})
-          }
+    // Using the 'resize' event causes some funny behavior on mobile devices, since the address bar can pop in and
+    // out causing the vertical height to change. Because of this, we only want to do things when the horizontal
+    // width changes.
+    let trackedWindowWidth = window.innerWidth
+    window.addEventListener('resize', () => {
+      if (trackedWindowWidth !== window.innerWidth) {
+        // Recalculate the automatic height so that `textBox.scrollHeight
+        // is NOT what gsap set it to previously.
+        textBox.style.height = 'auto'
+        if (isOpen) {
+          gsap.set(textBox, {height: textBox.scrollHeight})
+        } else {
+          gsap.set(textBox, {height: collapsedHeight})
         }
-      })(textBox)
+      }
+    })
+
+    textBoxBtn.onclick = () => {
+      if (isOpen) {
+        // Collapse the box
+        textBoxBtn.innerHTML = textBoxBtnInitialText
+        isOpen = false
+        gsap.to(textBox, {height: collapsedHeight})
+      } else {
+        // Expand the box
+        textBoxBtn.innerHTML = 'Collapse'
+        isOpen = true
+        gsap.to(textBox, {height: textBox.scrollHeight})
+      }
     }
   }, [])
 
   return (
     <div
+      ref={textBoxRef}
       className='textbox'
       style={{
         position: 'relative',
