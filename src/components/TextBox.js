@@ -63,7 +63,7 @@ const TextBox = ({children, btnClassName}) => {
         minHeight: '300px',
       }}
     >
-      <div className='textbox__inner' style={{paddingBottom: '50px'}}>
+      <div className='textbox__inner' style={{paddingBottom: '3rem'}}>
         {children}
       </div>
       <div
@@ -75,7 +75,7 @@ const TextBox = ({children, btnClassName}) => {
           position: 'absolute',
           bottom: '0',
           left: '0',
-          height: '100px',
+          height: '5rem',
           width: '100%',
           background: 'linear-gradient(to bottom, #ffffff00, white)',
         }}

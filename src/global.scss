@@ -49,6 +49,11 @@ img, video {
   text-decoration: none;
   color: inherit;
 
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
   @media (min-width: 576px) {
     font-size: 7rem;
   }

@@ -31,13 +31,8 @@ function App() {
 
   return (
     <div className='App'>
-      <header style={{
-        backgroundImage: background,
-      }}>
-        <Link
-          className='page-title'
-          to='/art'
-        >InstaArt</Link>
+      <header style={{backgroundImage: background}}>
+        <Link className='page-title' to='/art'>InstaArt</Link>
       </header>
       <main>
         <Container>

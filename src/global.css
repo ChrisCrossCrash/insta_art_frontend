@@ -38,6 +38,10 @@ img, video {
   text-decoration: none;
   color: inherit;
 }
+.page-title:hover {
+  text-decoration: none;
+  color: inherit;
+}
 @media (min-width: 576px) {
   .page-title {
     font-size: 7rem;
