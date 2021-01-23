@@ -19,14 +19,20 @@ const TextBox = ({children, btnClassName}) => {
         // Set the height when the page loads.
         gsap.set(textBox, {height: collapsedHeight})
 
+        // Using the 'resize' event causes some funny behavior on mobile devices, since the address bar can pop in and
+        // out causing the vertical height to change. Because of this, we only want to do things when the horizontal
+        // width changes.
+        let trackedWindowWidth = window.innerWidth
         window.addEventListener('resize', () => {
-          // Recalculate the automatic height so that `textBox.scrollHeight
-          // is NOT what gsap set it to previously.
-          textBox.style.height = 'auto'
-          if (isOpen) {
-            gsap.set(textBox, {height: textBox.scrollHeight})
-          } else {
-            gsap.set(textBox, {height: collapsedHeight})
+          if (trackedWindowWidth !== window.innerWidth) {
+            // Recalculate the automatic height so that `textBox.scrollHeight
+            // is NOT what gsap set it to previously.
+            textBox.style.height = 'auto'
+            if (isOpen) {
+              gsap.set(textBox, {height: textBox.scrollHeight})
+            } else {
+              gsap.set(textBox, {height: collapsedHeight})
+            }
           }
         })
 
