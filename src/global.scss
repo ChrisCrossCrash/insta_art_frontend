@@ -28,3 +28,10 @@ footer {
   border: none;
   background-color: transparent;
 }
+
+// Get the correct aspect ratio for images based on width and height HTML attributes
+// https://developer.mozilla.org/en-US/docs/Web/Media/images/aspect_ratio_mapping
+img, video {
+  //noinspection CssUnknownProperty
+  aspect-ratio: attr(width) / attr(height);
+}

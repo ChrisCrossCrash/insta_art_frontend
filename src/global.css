@@ -27,4 +27,8 @@ footer {
   background-color: transparent;
 }
 
-/*# sourceMappingURL=App.css.map */
+img, video {
+  aspect-ratio: attr(width)/attr(height);
+}
+
+/*# sourceMappingURL=global.css.map */

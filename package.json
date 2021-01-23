@@ -1,25 +1,22 @@
 {
   "name": "insta_art_frontend",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "/static/art",
+  "private": false,
+  "homepage": "/art",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
-    "gsap": "npm:@gsap/shockingly@^3.5.1",
+    "gsap": "npm:@gsap/shockingly@^3.6.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "react-scripts": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "deploy": "pscp -v -r build ubuntu@chriskumm.com:/home/ubuntu/insta_art",
+    "build-deply": "npm run build && npm run deploy",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -41,6 +38,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.6"
+    "@types/react-router-dom": "^5.1.7"
   }
 }
