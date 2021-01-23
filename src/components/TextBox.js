@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react'
 import {gsap} from 'gsap'
 
-const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightPx}) => {
+const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightPx, duration}) => {
   /* Wraps content to give it a "Read More" button after it reaches a certain height
   *
   * props:
@@ -24,6 +24,11 @@ const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightP
     const textBoxFade = textBox.querySelector('.textbox__fade')
     let isOpen = false
 
+    // styleTextBox() gets used:
+    //   1) when the TextBox is first rendered
+    //   2) when the window gets resized
+    // It DOES NOT get used when the user presses the button.
+    // That requires an animation, and this uses gsap.set()
     const styleTextBox = () => {
       textBox.style.height = 'auto'
       if (textBox.scrollHeight - allowedExtraHeightPx < collapsedHeightPx) {
@@ -46,23 +51,25 @@ const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightP
     // Style the textbox appropriately after it loads
     styleTextBox()
 
+    // Handle clicking the "Read More"/"Collapse" button
     textBoxBtn.onclick = () => {
       if (isOpen) {
         // Collapse the box
         textBoxBtn.innerHTML = 'Read More'
         isOpen = false
-        gsap.to(textBox, {height: collapsedHeightPx})
+        gsap.to(textBox, {height: collapsedHeightPx, duration: duration})
         textBoxFade.style.display = 'initial'
       } else {
         // Expand the box
         textBoxBtn.innerHTML = 'Collapse'
         isOpen = true
-        gsap.to(textBox, {height: textBox.scrollHeight})
+        gsap.to(textBox, {height: textBox.scrollHeight, duration: duration})
         textBoxFade.style.display = 'none'
       }
     }
 
 
+    // Handle window resizes
     // Using the 'resize' event causes some funny behavior on mobile devices, since the address bar can pop in and
     // out causing the vertical height to change. Because of this, we only want to do things when the horizontal
     // width changes.

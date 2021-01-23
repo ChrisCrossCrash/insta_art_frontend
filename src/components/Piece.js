@@ -62,6 +62,7 @@ export default function Piece(props) {
             btnClassName='btn btn-outline-secondary'
             collapsedHeightPx={500}
             allowedExtraHeightPx={200}
+            duration={1}
           >
             <Card.Body>
               <Card.Title style={{
