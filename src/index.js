@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'normalize.css';
-import App from './App';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'normalize.css'
+import App from './App'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,5 +23,5 @@ ReactDOM.render(
       </Switch>
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
-);
+  document.getElementById('root'),
+)
