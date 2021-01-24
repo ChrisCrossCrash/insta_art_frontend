@@ -100,17 +100,18 @@ export default function Piece(props) {
                     className='badge badge-pill badge-secondary'
                   >{piece.location.name}</Link>
                 </div>
-                <div>
+                {/* Styles are optional, so hide "Art Movements" if there are none */}
+                {piece.styles[0] && <div>
                   <span className='small text-muted font-weight-bold'>Art movements: </span>
-                  {piece.styles.map((movement, i) =>
+                  {piece.styles.map((style, i) =>
                       <span key={i}>
                     <Link
-                      to={`/art/style/${movement.pk}`}
+                      to={`/art/style/${style.pk}`}
                       className='badge badge-pill badge-secondary'
-                    >{movement.name}</Link>{' '}
+                    >{style.name}</Link>{' '}
                   </span>,
                   )}
-                </div>
+                </div>}
               </div>
               <Card.Text as='div' dangerouslySetInnerHTML={{__html: piece.description}}/>
             </Card.Body>

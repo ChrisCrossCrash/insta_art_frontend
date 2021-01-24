@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   text-align: center;
   overflow-y: hidden;
@@ -15,11 +19,6 @@ header {
 
 main {
   flex: 1;
-}
-
-footer {
-  background: grey;
-  margin-top: 30px;
 }
 
 .modal-content {

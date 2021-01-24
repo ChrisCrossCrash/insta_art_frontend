@@ -6,6 +6,10 @@
 // sm:        two cols  >= 576px
 // xs:        one col    < 576px (width: 100%)
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   text-align: center;
   overflow-y: hidden;
@@ -22,11 +26,6 @@ header {
 
 main {
   flex: 1;
-}
-
-footer {
-  background: grey;
-  margin-top: 30px;
 }
 
 // This prevents white boxes from filling in the unfilled areas around the image modals.
