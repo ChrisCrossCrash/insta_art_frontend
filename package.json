@@ -2,7 +2,6 @@
   "name": "insta_art_frontend",
   "version": "0.1.0",
   "private": false,
-  "homepage": "/art",
   "dependencies": {
     "gsap": "^3.8.0",
     "normalize.css": "^8.0.1",
