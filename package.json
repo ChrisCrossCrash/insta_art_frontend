@@ -4,7 +4,7 @@
   "private": false,
   "homepage": "/art",
   "dependencies": {
-    "gsap": "npm:@gsap/shockingly@^3.6.0",
+    "gsap": "^3.8.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
