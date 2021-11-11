@@ -60,7 +60,7 @@ function App() {
       </main>
       <footer>
         <div className='d-flex flex-column justify-content-center align-items-center py-3 small text-muted'>
-          <p className='m-0'>&copy;{new Date().getFullYear()} Christopher Kumm</p>
+          <p className='m-0'>&copy;{new Date().getFullYear()} Zeynep Temerit Kumm and Christopher Kumm</p>
           <a href='https://www.chriskumm.com' target='_blank' rel='noreferrer'>ChrisKumm.com</a>
         </div>
       </footer>
