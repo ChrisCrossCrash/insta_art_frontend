@@ -1,16 +1,14 @@
 import React, {useEffect, useRef} from 'react'
 import {gsap} from 'gsap'
 
+/** Wraps content to give it a "Read More" button after it reaches a certain height
+ *
+ * @param btnClassname extra classes for the "Read More"/"Collapse" button
+ * @param collapsedHeightPx How tall the content will be (in pixels) when collapsed
+ * @param allowedExtraHeightPx How many pixels past "collapsedHeightPx" the element needs to be for it to be expandable.
+ *
+ */
 const TextBox = ({children, btnClassName, collapsedHeightPx, allowedExtraHeightPx, duration}) => {
-  /* Wraps content to give it a "Read More" button after it reaches a certain height
-  *
-  * props:
-  *   btnClassname: extra classes for the "Read More"/"Collapse" button
-  *   collapsedHeightPx: How tall the content will be (in pixels) when collapsed
-  *   allowedExtraHeightPx: How many pixels past "collapsedHeightPx" the element needs to be for it to be expandable.
-  *
-  *  */
-
   const textBoxRef = useRef()
   const footerHeight = '5rem'
 
