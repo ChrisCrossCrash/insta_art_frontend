@@ -14,7 +14,7 @@ function App() {
   const currentUrl = useLocation()
 
   // Get the API URL
-  const piecesApiUrl = new URL(`${process.env.REACT_APP_DOMAIN}/api${currentUrl.pathname}${currentUrl.search}`)
+  const piecesApiUrl = new URL(`${process.env.REACT_APP_DOMAIN}/api/art${currentUrl.pathname}${currentUrl.search}`)
 
   const loadPieces = () => {
     console.log(`fetching pieces from ${piecesApiUrl.href}`)

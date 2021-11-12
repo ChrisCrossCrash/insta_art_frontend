@@ -88,7 +88,7 @@ export default function Piece(props) {
                 <div>
                   <span className='small text-muted font-weight-bold'>Artist: </span>
                   <Link
-                    to={`/art/artist/${piece.artist.pk}`}
+                    to={`/artist/${piece.artist.pk}`}
                     className='badge badge-pill badge-secondary'
                   >{piece.artist.name}</Link>
 
@@ -96,7 +96,7 @@ export default function Piece(props) {
                 <div>
                   <span className='small text-muted font-weight-bold'>Location: </span>
                   <Link
-                    to={`/art/location/${piece.location.pk}`}
+                    to={`/location/${piece.location.pk}`}
                     className='badge badge-pill badge-secondary'
                   >{piece.location.name}</Link>
                 </div>
@@ -106,7 +106,7 @@ export default function Piece(props) {
                   {piece.styles.map((style, i) =>
                       <span key={i}>
                     <Link
-                      to={`/art/style/${style.pk}`}
+                      to={`/style/${style.pk}`}
                       className='badge badge-pill badge-secondary'
                     >{style.name}</Link>{' '}
                   </span>,
