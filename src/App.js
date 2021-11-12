@@ -14,7 +14,7 @@ function App() {
   const currentUrl = useLocation()
 
   // Get the API URL
-  const piecesApiUrl = new URL(`${process.env.REACT_APP_DOMAIN}/api/art${currentUrl.pathname}${currentUrl.search}`)
+  const piecesApiUrl = new URL(`${process.env.REACT_APP_DOMAIN}/api${currentUrl.pathname}${currentUrl.search}`)
 
   const loadPieces = () => {
     console.log(`fetching pieces from ${piecesApiUrl.href}`)
@@ -45,7 +45,6 @@ function App() {
           {pieces && pieces.map((piece, i) => <Piece key={i} piece={piece} index={i}/>)}
         </Container>
         <div className='d-flex justify-content-center align-items-center'>
-          {/* TODO: Make these warnings go away. */}
           {prevApiUrl && <Link
             className='btn btn-outline-secondary mr-3'
             onClick={() => window.scrollTo(0, 0)}
