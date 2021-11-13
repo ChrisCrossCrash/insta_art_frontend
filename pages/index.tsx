@@ -1,10 +1,11 @@
-import type { NextPage, GetStaticProps } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import type { LayoutProps } from '../types/instaArtTypes'
 import { Layout } from '../components/Layout'
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { page } = context.query
   const apiResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/art`
+    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/art?page=${page ? page : '1'}`
   )
   const apiData = await apiResponse.json()
 

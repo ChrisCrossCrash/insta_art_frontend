@@ -22,6 +22,10 @@ export default function Piece(props: PieceProps) {
   const handleCloseModal = () => setShowModal(false)
   const handleShowModal = () => setShowModal(true)
 
+  // TODO: Load the images on this page with Next's Image component
+  //  https://nextjs.org/docs/basic-features/image-optimization#remote-images
+  //  https://nextjs.org/docs/basic-features/image-optimization#domains
+
   return (
     <Row style={{ marginBottom: 100 }}>
       <Modal show={showModal} onHide={handleCloseModal} centered size='xl'>
@@ -108,7 +112,6 @@ export default function Piece(props: PieceProps) {
                     </a>
                   </Link>
                 </div>
-                {/* TODO: See if there's a more elegant way than a ternary operator. */}
                 {piece.location ? (
                   <div>
                     <span className='small text-muted font-weight-bold'>

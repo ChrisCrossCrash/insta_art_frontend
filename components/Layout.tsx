@@ -8,6 +8,7 @@ export const Layout = ({ apiData }: LayoutProps) => {
 
   let pieces = apiData.results
 
+  // TODO: See if it's possible to load this with the Next image loader
   if (pieces) {
     background = `radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),linear-gradient(#FFFFFF00, white), url(${process.env.NEXT_PUBLIC_API_DOMAIN}${pieces[0].image.url})`
   }
@@ -28,7 +29,7 @@ export const Layout = ({ apiData }: LayoutProps) => {
         </Container>
         <div className='d-flex justify-content-center align-items-center'>
           {apiData.previous && (
-            <Link href={apiData.previous}>
+            <Link href={`/${apiData.previous.split(/\/art\//)[1]}`}>
               <a
                 className='btn btn-outline-secondary mr-3'
                 onClick={() => window.scrollTo(0, 0)}
@@ -38,8 +39,8 @@ export const Layout = ({ apiData }: LayoutProps) => {
               </a>
             </Link>
           )}
-          {apiData.previous && (
-            <Link href={apiData.previous}>
+          {apiData.next && (
+            <Link href={`/${apiData.next.split(/\/art\//)[1]}`}>
               <a
                 className='btn btn-outline-secondary ml-3'
                 onClick={() => window.scrollTo(0, 0)}

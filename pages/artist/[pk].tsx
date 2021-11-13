@@ -1,27 +1,15 @@
-import type { NextPage, GetStaticProps } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import type { LayoutProps, Artist } from '../../types/instaArtTypes'
 import { Layout } from '../../components/Layout'
 
-export const getStaticPaths = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/art/artist`
-  )
-  const data = await response.json()
-  const paths = data.map((artist: Artist) => ({
-    params: { pk: artist.pk.toString() },
-  }))
-  return {
-    paths,
-    fallback: false,
-  }
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { pk } = context.params!
+  const { page } = context.query
 
-  const apiResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/art/artist/${pk}`
-  )
+  const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN
+  const apiUrl = `${apiDomain}/api/art/artist/${pk}?page=${page ? page : '1'}`
+
+  const apiResponse = await fetch(apiUrl)
   const apiData = await apiResponse.json()
 
   return { props: { apiData } }
