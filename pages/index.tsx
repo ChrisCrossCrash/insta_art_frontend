@@ -5,7 +5,7 @@ import { Layout } from '../components/Layout'
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { page } = context.query
   const apiResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/art?page=${page ? page : '1'}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/art?page=${page ? page : '1'}`
   )
   const apiData = await apiResponse.json()
 

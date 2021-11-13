@@ -1,13 +1,14 @@
 import type { ArtPiece } from '../types/instaArtTypes'
 import { useState } from 'react'
 import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
+import Image from 'next/image'
 import Card from 'react-bootstrap/cjs/Card'
 import Button from 'react-bootstrap/cjs/Button'
 import Row from 'react-bootstrap/Row'
 import Modal from 'react-bootstrap/cjs/Modal'
 import Link from 'next/link'
 import TextBox from './TextBox'
+import { imageLoader } from '../utils/imageLoader'
 
 type PieceProps = {
   piece: ArtPiece
@@ -22,41 +23,30 @@ export default function Piece(props: PieceProps) {
   const handleCloseModal = () => setShowModal(false)
   const handleShowModal = () => setShowModal(true)
 
-  // TODO: Load the images on this page with Next's Image component
-  //  https://nextjs.org/docs/basic-features/image-optimization#remote-images
-  //  https://nextjs.org/docs/basic-features/image-optimization#domains
-
   return (
     <Row style={{ marginBottom: 100 }}>
       <Modal show={showModal} onHide={handleCloseModal} centered size='xl'>
-        <img
-          src={`${process.env.NEXT_PUBLIC_API_DOMAIN}${piece.image.url}`}
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}${piece.image.url}`}
           height={piece.image.height}
           width={piece.image.width}
           alt={piece.title}
-          style={{
-            objectFit: 'contain',
-            height: '90vh',
-            width: '100%',
-          }}
+          className='modalImage'
           onClick={handleCloseModal}
+          loader={imageLoader}
         />
       </Modal>
 
       {/* Swap the image and info columns based on if the index is even or odd. */}
       <Col xs={12} md={{ span: 6, order: index % 2 }}>
         <Image
-          loading='lazy'
-          src={`${process.env.NEXT_PUBLIC_API_DOMAIN}${piece.image.url}`}
+          src={`${process.env.NEXT_PUBLIC_API_URL}${piece.image.url}`}
           height={piece.image.height}
           width={piece.image.width}
           alt={piece.title}
-          fluid
-          style={{
-            boxShadow: '5px 5px 10px #00000022',
-            cursor: 'pointer',
-          }}
+          className='pieceImage'
           onClick={handleShowModal}
+          loader={imageLoader}
         />
       </Col>
 
