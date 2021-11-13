@@ -27,8 +27,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return { props: { apiData } }
 }
 
-const IndexPage: NextPage<LayoutProps> = ({ apiData }) => {
+const StylePage: NextPage<LayoutProps> = ({ apiData }) => {
   return <Layout apiData={apiData} />
 }
 
-export default IndexPage
+export default StylePage
