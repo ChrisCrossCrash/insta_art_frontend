@@ -27,7 +27,7 @@ export type ArtPiece = {
   }
 }
 
-export type ArtPageProps = {
+export type LayoutProps = {
   apiData: {
     count: number
     next: string | null
