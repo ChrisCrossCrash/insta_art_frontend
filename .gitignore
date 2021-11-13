@@ -26,3 +26,8 @@ yarn-error.log*
 # The npm config contains the Club GreenSock account token, so don't share it.
 .npmrc
 
+# Next JS
+/.next/
+
+# ES Lint cache
+.eslintcache

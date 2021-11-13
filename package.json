@@ -2,41 +2,40 @@
   "name": "insta_art_frontend",
   "version": "0.1.0",
   "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
   "dependencies": {
+    "@fontsource/josefin-sans": "^4.5.1",
+    "bootstrap": "^4.5.0",
     "gsap": "^3.8.0",
+    "next": "^12.0.3",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "pscp -v -r build ubuntu@chriskumm.com:/home/ubuntu/insta_art",
-    "build-deply": "npm run build && npm run deploy",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-dom": "^17.0.2",
+    "sass": "^1.43.4"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.7"
+    "eslint": "<8.0.0",
+    "eslint-config-next": "12.0.3",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4",
+    "typescript-plugin-css-modules": "^3.4.0"
+  },
+  "lint-staged": {
+    "*.md,html,css,scss": "prettier --write",
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --cache"
+    ]
   }
 }
