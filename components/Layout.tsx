@@ -8,6 +8,7 @@ export const Layout = ({ apiData }: LayoutProps) => {
 
   let pieces = apiData.results
 
+  // TODO: Make the background blur up like the other images.
   if (pieces) {
     background = `radial-gradient(at 50% 131px, #FFFFFFDD, #FFFFFF00),linear-gradient(#FFFFFF00, white), url(${process.env.NEXT_PUBLIC_API_URL}${pieces[0].image.url})`
   }

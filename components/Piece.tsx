@@ -34,6 +34,9 @@ export default function Piece(props: PieceProps) {
           className='modalImage'
           onClick={handleCloseModal}
           loader={imageLoader}
+          blurDataURL={piece.image.image_b64_thumbnail}
+          placeholder='blur'
+          unoptimized
         />
       </Modal>
 
@@ -47,6 +50,9 @@ export default function Piece(props: PieceProps) {
           className='pieceImage'
           onClick={handleShowModal}
           loader={imageLoader}
+          blurDataURL={piece.image.image_b64_thumbnail}
+          placeholder='blur'
+          unoptimized
         />
       </Col>
 

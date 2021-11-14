@@ -24,6 +24,7 @@ export type ArtPiece = {
     url: string
     height: number
     width: number
+    image_b64_thumbnail: string
   }
 }
 
