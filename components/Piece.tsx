@@ -1,3 +1,4 @@
+import React from 'react'
 import type { ArtPiece } from '../types/instaArtTypes'
 import { useState } from 'react'
 import Col from 'react-bootstrap/Col'
@@ -6,6 +7,7 @@ import Card from 'react-bootstrap/cjs/Card'
 import Button from 'react-bootstrap/cjs/Button'
 import Row from 'react-bootstrap/Row'
 import Modal from 'react-bootstrap/cjs/Modal'
+import Badge from 'react-bootstrap/Badge'
 import Link from 'next/link'
 import TextBox from './TextBox'
 import { imageLoader } from '../utils/imageLoader'
@@ -14,6 +16,23 @@ type PieceProps = {
   piece: ArtPiece
   index: number
 }
+
+const BadgeLink = (props: { children: React.ReactNode; href: string }) => (
+  <Link href={props.href} passHref>
+    <Badge
+      pill
+      as='a'
+      bg='secondary'
+      style={{
+        textDecoration: 'none',
+        cursor: 'pointer',
+      }}
+      className='badge-link'
+    >
+      {props.children}
+    </Badge>
+  </Link>
+)
 
 export default function Piece(props: PieceProps) {
   const piece = props.piece
@@ -102,22 +121,18 @@ export default function Piece(props: PieceProps) {
                   <span className='small text-muted font-weight-bold'>
                     Artist:{' '}
                   </span>
-                  <Link href={`/artist/${piece.artist.pk}`}>
-                    <a className='badge badge-pill badge-secondary'>
-                      {piece.artist.name}
-                    </a>
-                  </Link>
+                  <BadgeLink href={`/artist/${piece.artist.pk}`}>
+                    {piece.artist.name}
+                  </BadgeLink>
                 </div>
                 {piece.location ? (
                   <div>
                     <span className='small text-muted font-weight-bold'>
                       Location:{' '}
                     </span>
-                    <Link href={`/location/${piece.location.pk}`}>
-                      <a className='badge badge-pill badge-secondary'>
-                        {piece.location.name}
-                      </a>
-                    </Link>
+                    <BadgeLink href={`/location/${piece.location.pk}`}>
+                      {piece.location.name}
+                    </BadgeLink>
                   </div>
                 ) : (
                   ''
@@ -129,11 +144,9 @@ export default function Piece(props: PieceProps) {
                     </span>
                     {piece.styles.map((style, i) => (
                       <span key={i}>
-                        <Link href={`/style/${style.pk}`}>
-                          <a className='badge badge-pill badge-secondary'>
-                            {style.name}
-                          </a>
-                        </Link>{' '}
+                        <BadgeLink href={`/style/${style.pk}`}>
+                          {style.name}
+                        </BadgeLink>
                       </span>
                     ))}
                   </div>
